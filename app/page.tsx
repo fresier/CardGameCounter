@@ -177,9 +177,7 @@ export default function SkyjoScoreApp() {
       <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-2xl sm:text-4xl font-bold text-foreground">🎯 Score</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">
-            Suivez vos scores et devenez le maître du jeu !
-          </p>
+          <p className="text-sm sm:text-base text-muted-foreground">Suivez vos scores et devenez le maître du jeu !</p>
         </div>
 
         <Card className="leading-4">
@@ -267,7 +265,9 @@ export default function SkyjoScoreApp() {
                             className="text-center p-1 sm:p-2 font-semibold min-w-20 sm:min-w-24 text-xs sm:text-sm"
                             title={player.name}
                           >
-                            <div className="truncate max-w-20 sm:max-w-24">{player.name}</div>
+                            <div className="truncate max-w-20 sm:max-w-24 flex justify-center items-center mx-auto">
+                              {player.name}
+                            </div>
                           </th>
                         ))}
                       </tr>
@@ -275,14 +275,14 @@ export default function SkyjoScoreApp() {
                     <tbody>
                       {Array.from({ length: currentRound }, (_, roundIndex) => (
                         <tr key={roundIndex} className="border-b hover:bg-muted/50">
-                          <td className="p-1 sm:p-2 font-medium text-xs sm:text-sm sticky left-0 bg-background">
+                          <td className="p-1 sm:p-2 font-medium text-xs sm:text-sm sticky left-0 bg-background text-right">
                             M{roundIndex + 1}
                           </td>
                           {players.map((player) => (
                             <td key={player.id} className="p-1 sm:p-2">
                               <Input
                                 type="number"
-                                className="w-16 sm:w-20 text-center text-xs sm:text-sm h-8 sm:h-10"
+                                className="w-16 text-center text-xs sm:text-sm h-8 sm:h-10 sm:w-full"
                                 placeholder="0"
                                 value={player.scores[roundIndex] || ""}
                                 onChange={(e) => updateScore(player.id, roundIndex, e.target.value)}
